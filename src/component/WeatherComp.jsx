@@ -8,6 +8,7 @@ import Loder from '../Util/Loder';
     const debouncedInputValue = useDebounce(cityname, 300);   
     const [isPending, startTransition] = useTransition();
     const [isDisabled,setDisabled]=useState(false);
+    const [isLoading,setIsloading]=useState(false);
     const API_KEY= '1635890035cbba097fd5c26c8ea672a1';
   
     const handleCityname=(e)=>{
@@ -19,6 +20,7 @@ import Loder from '../Util/Loder';
                 alert('Please enter cityname')
                 return;
             }
+            setIsloading(true);
             setDisabled(true)
             const weatherRes= await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${debouncedInputValue}&appid=${API_KEY}`);
             const result = await weatherRes.json();
@@ -26,8 +28,10 @@ import Loder from '../Util/Loder';
              setSearchData(result?.list)
             });
             setDisabled(false)
+            setIsloading(false);
         }catch(err){
-            setDisabled(true)
+            setDisabled(true);
+            setIsloading(false);
         }
       
     },[debouncedInputValue]);
@@ -42,7 +46,7 @@ import Loder from '../Util/Loder';
                     <h1> Weather in your city</h1>
                     <input type='text' name='search'  onChange={handleCityname} disabled={isDisabled}/>
                     <button onClick={fetchWeatherData}>Search</button>
-                    <div>{isPending ? <Loder />:'' }</div>
+                    <div>{(isPending || isLoading )&& <Loder /> }</div>
                 </div>
         </div>
         <WeatherData  data={searchData}/>
