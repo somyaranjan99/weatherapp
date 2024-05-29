@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  font-family: Helvetica;
+  -webkit-font-smoothing: antialiased;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container{
+  width: 100%;
+  margin: 0 auto;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper{
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.search_wrapper{
+  width: 100%;
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+  gap: 20px;
+}
+h1{
+  font-size: 20px;
+  color: #f57b42;
+}
+input{
+  width: 200px;
+  height: 40px;
+  border: 1px solid #f57b42;
+  outline: #f57b42;
+}
+button{
+  width: 100px;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: #f57b42;
+  cursor: pointer;
+}
+h2{
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Table Styles */
+table, td, th {
+  border: 2px solid #f57b42;
 }
 
-@keyframes App-logo-spin {
-  from {
+table {
+  width: 30%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.load-container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+}
+
+.outer-ring {
+  color: #fff;
+  position: relative;
+  border-radius: 50%;
+  border: 5px solid #eee;
+  z-index: 1000;
+  width: 120px;
+  height: 120px;
+  box-shadow: 1px rgba(0, 0, 0, 0.2);
+  animation: spiner 1s infinite linear;
+}
+.inner-ring {
+  position: relative;
+  margin-top: 8px;
+  background-color: dodgerblue;
+  width: 20px;
+  height: 20px;
+  z-index: 1001;
+  border: 1px solid transparent;
+  border-radius: 50%;
+}
+.tbl_wrapper{
+
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+@keyframes spiner {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+
+  100% {
     transform: rotate(360deg);
   }
 }
