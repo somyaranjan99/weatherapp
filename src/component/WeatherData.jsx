@@ -12,7 +12,7 @@ function WeatherData({data}) {
             <table key={index}>
                 
   <tr>
-    <th colSpan="2">Date:{dateStr} </th>
+    <th colSpan="2" className='date__container'>Date:{dateStr} </th>
   </tr>
   <tr>
     <th colSpan='2'>Temprature</th>

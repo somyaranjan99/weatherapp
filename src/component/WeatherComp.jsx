@@ -20,6 +20,7 @@ import Loder from '../Util/Loder';
                 alert('Please enter cityname')
                 return;
             }
+            
             setIsloading(true);
             setDisabled(true)
             const weatherRes= await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${debouncedInputValue}&appid=${API_KEY}`);
@@ -27,11 +28,13 @@ import Loder from '../Util/Loder';
             startTransition(() => {
              setSearchData(result?.list)
             });
-            setDisabled(false)
-            setIsloading(false);
+            setTimeout(()=>{
+                setDisabled(false)
+                setIsloading(false);
+            },1500)
+            
         }catch(err){
-            setDisabled(true);
-            setIsloading(false);
+            console.log(err)
         }
       
     },[debouncedInputValue]);
@@ -46,7 +49,7 @@ import Loder from '../Util/Loder';
                     <h1> Weather in your city</h1>
                     <input type='text' name='search'  onChange={handleCityname} disabled={isDisabled}/>
                     <button onClick={fetchWeatherData}>Search</button>
-                    <div>{(isPending || isLoading )&& <Loder /> }</div>
+                    <div>{(isPending || isLoading ) && <Loder /> }</div>
                 </div>
         </div>
         <WeatherData  data={searchData}/>

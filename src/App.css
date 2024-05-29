@@ -52,7 +52,10 @@ h2{
 
 /* Table Styles */
 table, td, th {
-  border: 2px solid #f57b42;
+  border: 2px solid #000;
+}
+.date__container{
+  background-color: #f57b42;
 }
 
 table {
@@ -62,25 +65,22 @@ table {
 }
 
 .load-container {
-  position: absolute;
+  position: relative;
   margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 120px;
-  height: 120px;
+
+  width: 60px;
+  height: 60px;
   color: #f57b42;
 }
 
 .outer-ring {
   color: #fff;
-  position: relative;
+  position: absolute;
   border-radius: 50%;
   border: 5px solid #eee;
   z-index: 1000;
-  width: 120px;
-  height: 120px;
+  width: 40px;
+  height: 40px;
   box-shadow: 1px rgba(0, 0, 0, 0.2);
   animation: spiner 1s infinite linear;
 }
